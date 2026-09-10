@@ -1,0 +1,8 @@
+﻿.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# Ignore large binary ONNX files from normal git history
+# (These files are uploaded to GitHub Releases)
+*.onnx
