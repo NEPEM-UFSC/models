@@ -3,6 +3,7 @@
 .RData
 .Ruserdata
 
-# Ignore large binary ONNX files from normal git history
+# Ignore large binary ONNX models and DLLs from normal git history
 # (These files are uploaded to GitHub Releases)
 *.onnx
+*.dll
