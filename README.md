@@ -1,16 +1,18 @@
-# Pre-trained Neural Models for pliman
+﻿# Pre-trained Neural Models for pliman
 
 [![GitHub Release](https://img.shields.io/github/v/release/NEPEM-UFSC/models?color=blue&label=release)](https://github.com/NEPEM-UFSC/models/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![pliman](https://img.shields.io/badge/R%20Package-pliman-brightgreen)](https://github.com/nepem-ufsc/pliman)
 
-This repository hosts pre-trained Deep Learning models in **ONNX** format used by the [**pliman**](https://github.com/nepem-ufsc/pliman) (Plant Image Analysis) R package for background removal, foreground segmentation, open-vocabulary object detection, zero-shot instance segmentation, monocular 3D depth estimation, self-supervised feature extraction, star-convex polygon detection, and generative super-resolution.
+This repository hosts pre-trained Deep Learning models in **ONNX** format used by the [**pliman**](https://github.com/nepem-ufsc/pliman) (Plant Image Analysis) R package for background removal, foreground segmentation, open-vocabulary object detection, zero-shot instance segmentation, monocular 3D depth estimation, self-supervised feature extraction, star-convex polygon detection, generative super-resolution, human pose estimation, and image classification.
 
-Models are served via **GitHub Releases** to ensure fast, stable, and permanent downloads worldwide without reliance on external or transient third-party hosts.
+Models are served via **GitHub Releases** and **Hugging Face** to ensure fast, stable, and permanent downloads worldwide.
 
 ---
 
 ## 📦 Available Models
+
+### Foundation & Specialized Models
 
 | Model | Filename | Size | Input Size | Task / Architecture | Description |
 | :--- | :--- | :---: | :---: | :--- | :--- |
@@ -30,38 +32,52 @@ Models are served via **GitHub Releases** to ensure fast, stable, and permanent 
 | **`rmbg-2.0`** | `rmbg-2.0.onnx` | 976.9 MB | 1024×1024 | Next-Gen Matting (BRIA AI RMBG 2.0 / BiRefNet) | State-of-the-art background removal for high-detail inputs. |
 | **`depth-anything-v2`** | `depth-anything-v2-small.onnx` | 94.5 MB | 518×518 | Monocular Depth Estimation (Depth Anything V2 Small) | Dense relative 3D depth estimation from a single image. |
 | **`dinov2`** | `dinov2-vits14.onnx` | 84.4 MB | 518×518 | Vision Foundation Model (Meta AI DINOv2 ViT-S/14) | Self-supervised dense patch embeddings & semantic PCA mapping. |
-| **`yolo11n`** | `yolo11n.onnx` | 10.2 MB | 640×640 | Real-Time Object Detection (Ultralytics YOLO11 Nano) | Ultra-fast general object detection with bounding boxes (80 COCO classes). |
-| **`yolo11n-seg`** | `yolo11n-seg.onnx` | 11.2 MB | 640×640 | Real-Time Instance Segmentation (Ultralytics YOLO11 Nano Seg) | Fast real-time instance segmentation with bounding boxes and masks. |
 | **`stardist`** | `stardist-dsb2018.onnx` | 5.6 MB | 256×256 | Star-Convex Object Detection (StarDist DSB 2018) | Star-convex polygon detection for round/overlapping objects, seeds, and cells. |
 | **`realesrgan-compact`** | `realesrgan-compact.onnx` | 4.6 MB | 256×256 | Generative 4× Super-Resolution (Real-ESRGAN Compact) | Fast 4× image upscaling with edge preservation and tiled processing. |
+
+### YOLO26 Suite ([zwh20081/yolo26-onnx](https://huggingface.co/zwh20081/yolo26-onnx))
+
+| Model | Filename | Size | Input Size | Task / Architecture | Description |
+| :--- | :--- | :---: | :---: | :--- | :--- |
+| **`yolo26n`** | `yolo26n.onnx` | 9.5 MB | 640×640 | Real-Time Object Detection (YOLO26 Nano) | End-to-end 80 COCO classes object detection; ultra-fast CPU inference. |
+| **`yolo26s`** | `yolo26s.onnx` | 36.5 MB | 640×640 | Real-Time Object Detection (YOLO26 Small) | Balanced real-time object detector. |
+| **`yolo26m`** | `yolo26m.onnx` | 78.2 MB | 640×640 | Real-Time Object Detection (YOLO26 Medium) | Medium-size high-accuracy object detector. |
+| **`yolo26l`** | `yolo26l.onnx` | 95.0 MB | 640×640 | Real-Time Object Detection (YOLO26 Large) | High-capacity object detection. |
+| **`yolo26x`** | `yolo26x.onnx` | 212.9 MB | 640×640 | Real-Time Object Detection (YOLO26 XLarge) | Maximum precision object detector for complex scenes. |
+| **`yolo26n-seg`** | `yolo26n-seg.onnx` | 10.7 MB | 640×640 | Real-Time Instance Segmentation (YOLO26 Nano Seg) | Fast instance segmentation with continuous bilinear mask interpolation. |
+| **`yolo26s-seg`** | `yolo26s-seg.onnx` | 40.0 MB | 640×640 | Real-Time Instance Segmentation (YOLO26 Small Seg) | Balanced instance segmentation. |
+| **`yolo26m-seg`** | `yolo26m-seg.onnx` | 90.2 MB | 640×640 | Real-Time Instance Segmentation (YOLO26 Medium Seg) | High-precision instance masks and morphological metrics. |
+| **`yolo26l-seg`** | `yolo26l-seg.onnx` | 107.1 MB | 640×640 | Real-Time Instance Segmentation (YOLO26 Large Seg) | Large-capacity instance segmentation. |
+| **`yolo26x-seg`** | `yolo26x-seg.onnx` | 240.0 MB | 640×640 | Real-Time Instance Segmentation (YOLO26 XLarge Seg) | Highest fidelity instance segmentation and boundary precision. |
+| **`yolo26n-pose`** | `yolo26n-pose.onnx` | 11.6 MB | 640×640 | Real-Time Pose Estimation (YOLO26 Nano Pose) | 17 COCO anatomical keypoints and skeleton limb connections. |
+| **`yolo26s-pose`** | `yolo26s-pose.onnx` | 39.9 MB | 640×640 | Real-Time Pose Estimation (YOLO26 Small Pose) | Balanced speed/precision keypoint detection. |
+| **`yolo26m-pose`** | `yolo26m-pose.onnx` | 82.6 MB | 640×640 | Real-Time Pose Estimation (YOLO26 Medium Pose) | Medium pose estimation model. |
+| **`yolo26l-pose`** | `yolo26l-pose.onnx` | 99.4 MB | 640×640 | Real-Time Pose Estimation (YOLO26 Large Pose) | Large-capacity pose estimation model. |
+| **`yolo26x-pose`** | `yolo26x-pose.onnx` | 220.0 MB | 640×640 | Real-Time Pose Estimation (YOLO26 XLarge Pose) | Maximum accuracy pose estimation for challenging poses and occlusion. |
+| **`yolo26n-cls`** | `yolo26n-cls.onnx` | 10.8 MB | 224×224 | Image Classification (YOLO26 Nano Cls) | Fast 1,000-class ImageNet classification with Softmax probabilities. |
+| **`yolo26s-cls`** | `yolo26s-cls.onnx` | 25.7 MB | 224×224 | Image Classification (YOLO26 Small Cls) | Balanced ImageNet classification. |
+| **`yolo26m-cls`** | `yolo26m-cls.onnx` | 44.4 MB | 224×224 | Image Classification (YOLO26 Medium Cls) | High accuracy ImageNet classification. |
+| **`yolo26l-cls`** | `yolo26l-cls.onnx` | 53.9 MB | 224×224 | Image Classification (YOLO26 Large Cls) | Large ImageNet classification model. |
 
 ---
 
 ## 🚀 Usage in `pliman`
 
-In R, models are downloaded automatically on first use or manually via `pliman_download_model()`:
+In R, models can be loaded directly from this directory or downloaded via `pliman_download_model()`:
 
 ```r
 library(pliman)
 
-# Check available models and their download status
-pliman_available_models()
+# Set model directory (or pass dir = "D:/Desktop/models" to any function)
+models_dir <- "D:/Desktop/models"
 
-# Download specific models (saved to tools::R_user_dir("pliman", "data")/models)
-pliman_download_model("u2netp")
-pliman_download_model("ben2")
-pliman_download_model("grounded-sam")
-pliman_download_model("depth-anything-v2")
-pliman_download_model("dinov2")
-pliman_download_model("yolo11n")
-pliman_download_model("yolo11n-seg")
-pliman_download_model("stardist")
-pliman_download_model("realesrgan-compact")
+# Check available models and their download status
+pliman_available_models(dir = models_dir)
 
 img <- image_import("leaves.jpg")
 
 # 1. Background removal / foreground segmentation
-seg <- image_segment_dl(img, model = "u2netp")
+seg <- image_segment_dl(img, model = "u2netp", dir = models_dir)
 
 # 2. Text-prompted zero-shot instance segmentation (Grounded-SAM)
 res <- image_segment_dl(
@@ -70,50 +86,54 @@ res <- image_segment_dl(
   prompt = "leaf",
   type = "highlight",
   bbox = TRUE,
-  engine = "gpu"
+  dir = models_dir
 )
 
-# 3. Real-time object detection (YOLO11)
-boxes <- image_detect_dl(img, model = "yolo11n")
+# 3. Real-time object detection (YOLO26)
+boxes <- image_detect_dl(img, model = "yolo26n", dir = models_dir)
 
-# 4. Real-time instance segmentation (YOLO11-seg)
-yolo_seg <- image_segment_dl(img, model = "yolo11n-seg", type = "highlight")
+# 4. Real-time instance segmentation (YOLO26-seg)
+yolo_seg <- image_segment_dl(img, model = "yolo26n-seg", type = "highlight", dir = models_dir)
 
-# 5. Star-convex polygon detection for seeds, grains, and cells (StarDist)
-stars <- image_stardist_dl(img, type = "segment")
+# 5. Real-time human pose estimation (YOLO26-pose)
+pose_res <- image_pose_dl(img, model = "yolo26n-pose", dir = models_dir)
 
-# 6. Monocular 3D depth estimation (Depth Anything V2)
-depth <- image_depth_dl(img, col_palette = "viridis")
+# 6. Image classification (YOLO26-cls, Top-5 ImageNet classes)
+top_cls <- image_classify_dl(img, model = "yolo26n-cls", top_k = 5, dir = models_dir)
 
-# 7. Self-supervised feature extraction and semantic PCA mapping (DINOv2)
-feats <- image_features_dl(img)
+# 7. Star-convex polygon detection for seeds, grains, and cells (StarDist)
+stars <- image_stardist_dl(img, type = "segment", dir = models_dir)
 
-# 8. 4x Generative super-resolution (Real-ESRGAN Compact)
-sr_img <- image_superres_dl(img, scale = 4)
+# 8. Monocular 3D depth estimation (Depth Anything V2)
+depth <- image_depth_dl(img, col_palette = "viridis", dir = models_dir)
+
+# 9. Self-supervised feature extraction and semantic PCA mapping (DINOv2)
+feats <- image_features_dl(img, dir = models_dir)
+
+# 10. 4x Generative super-resolution (Real-ESRGAN Compact)
+sr_img <- image_superres_dl(img, scale = 4, dir = models_dir)
 ```
 
 ---
 
 ## 📥 Direct Download Links
 
-All model assets can be downloaded directly from GitHub Releases:
-
+### GitHub Releases
+All foundational model assets can be downloaded directly from GitHub Releases:
 ```text
 https://github.com/NEPEM-UFSC/models/releases/download/v1.0.0/<filename>
 ```
 
+### Hugging Face (YOLO26 Suite)
+The YOLO26 suite is hosted on Hugging Face:
+```text
+https://huggingface.co/zwh20081/yolo26-onnx/resolve/main/<filename>
+```
 For example:
-* `https://github.com/NEPEM-UFSC/models/releases/download/v1.0.0/u2netp.onnx`
-* `https://github.com/NEPEM-UFSC/models/releases/download/v1.0.0/groundingdino-tiny.onnx`
-* `https://github.com/NEPEM-UFSC/models/releases/download/v1.0.0/sam2.1.encoder.onnx`
-* `https://github.com/NEPEM-UFSC/models/releases/download/v1.0.0/sam2.1.decoder.onnx`
-* `https://github.com/NEPEM-UFSC/models/releases/download/v1.0.0/depth-anything-v2-small.onnx`
-* `https://github.com/NEPEM-UFSC/models/releases/download/v1.0.0/dinov2-vits14.onnx`
-* `https://github.com/NEPEM-UFSC/models/releases/download/v1.0.0/yolo11n.onnx`
-* `https://github.com/NEPEM-UFSC/models/releases/download/v1.0.0/yolo11n-seg.onnx`
-* `https://github.com/NEPEM-UFSC/models/releases/download/v1.0.0/stardist-dsb2018.onnx`
-* `https://github.com/NEPEM-UFSC/models/releases/download/v1.0.0/realesrgan-compact.onnx`
-* `https://github.com/NEPEM-UFSC/models/releases/download/v1.0.0/vocab.txt`
+* `https://huggingface.co/zwh20081/yolo26-onnx/resolve/main/yolo26n.onnx`
+* `https://huggingface.co/zwh20081/yolo26-onnx/resolve/main/yolo26n-seg.onnx`
+* `https://huggingface.co/zwh20081/yolo26-onnx/resolve/main/yolo26n-pose.onnx`
+* `https://huggingface.co/zwh20081/yolo26-onnx/resolve/main/yolo26n-cls.onnx`
 
 ---
 
@@ -130,6 +150,6 @@ These ONNX weights originate from the following foundational works:
 * **Grounding DINO**: Liu et al. (*Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection*, 2023).
 * **Depth Anything V2**: Yang et al. (*Depth Anything V2: A More Capable Foundation Model for Monocular Depth Estimation*, 2024).
 * **DINOv2**: Oquab et al., Meta AI (*DINOv2: Learning Robust Visual Features without Supervision*, TMLR 2024).
-* **YOLO11**: Ultralytics (*YOLO11: State-of-the-Art Real-Time Object Detection and Instance Segmentation*, 2024).
+* **YOLO26**: zwh20081 / YOLO Community (*End-to-End YOLO26 ONNX Models for Detection, Segmentation, Pose, and Classification*, [Hugging Face](https://huggingface.co/zwh20081/yolo26-onnx)).
 * **StarDist**: Schmidt et al. (*Cell Detection with Star-Convex Polygons*, MICCAI 2018).
-* **Real-ESRGAN Compact**: Wang et al. (*Real-ESRGAN: Training Real-World Blind Super-Resolution with Pure Synthetic Data*, ICCVW 2021).
+* **Real-ESRGAN Compact**: Wang et al. (*Real-ESRGAN: Training Real-World Blind Super-Resolution with Pure Synthetic Data*, ICCVW 2021).
